@@ -1,6 +1,6 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, CreateDateColumn, DeleteDateColumn, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
-Entity()
+@Entity()
 export class School {
     @PrimaryGeneratedColumn()
     id: number;
@@ -12,6 +12,10 @@ export class School {
     email: string;
     @Column()
     phone: string;
-    @Column({ type: 'boolean' })
+    @Column({ type: 'boolean', default: true })
     state: boolean;
+    @CreateDateColumn()
+    createdDate: Date;
+    @DeleteDateColumn()
+    deletedDate: Date | null = null;
 }
